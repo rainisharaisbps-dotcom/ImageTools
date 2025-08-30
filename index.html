@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Tools by Omnician | Prakhar Rai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff5e7d;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: #ffde59;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        
+        .founder {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 0 auto 30px;
+            max-width: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px 0 60px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            padding: 30px 25px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            height: 70px;
+            width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(106, 17, 203, 0.1);
+        }
+        
+        .tool-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.4rem;
+        }
+        
+        .tool-card p {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+        
+        .tool-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+        }
+        
+        .tool-button:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 0 20px;
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .company-info {
+            max-width: 600px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tool-card {
+                padding: 25px 20px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tool-card {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .tool-card:nth-child(1) { animation-delay: 0.1s; }
+        .tool-card:nth-child(2) { animation-delay: 0.2s; }
+        .tool-card:nth-child(3) { animation-delay: 0.3s; }
+        .tool-card:nth-child(4) { animation-delay: 0.4s; }
+        .tool-card:nth-child(5) { animation-delay: 0.5s; }
+        .tool-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-magic"></i>
+                    <h1>ImageTools by Omnician</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Powerful Image Tools</h2>
+            <p>Transform your images with our easy-to-use tools. No installation required.</p>
+            <div class="founder">
+                <p>Created by <strong>Prakhar Rai</strong> | Founder of <strong>Omnician</strong></p>
+            </div>
+        </section>
+
+        <!-- Tools Grid -->
+        <section class="tools-grid">
+            <div class="tool-card">
+               <div class="tool-icon">
+    <i class="fas fa-pencil-alt"></i>
+        </div>
+          <h3>Image to Sketch</h3>
+           <p>Convert your photos to beautiful pencil sketches with our AI-powered tool</p>
+            <a href="/imagesketch-converter.html">
+    <button class="tool-button">Use Tool</button>
+           </a> 
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-compress-alt"></i>
+                </div>
+                <h3>Image Compressor</h3>
+                <p>Reduce image file size without losing quality. Perfect for web use</p>
+                <button class="tool-button">Use Tool</button>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </div>
+                <h3>Image Resizer</h3>
+                <p>Resize your images to any dimension while maintaining aspect ratio</p>
+                <button class="tool-button">Use Tool</button>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Image Filters</h3>
+                <p>Apply beautiful filters and effects to enhance your photos</p>
+                <button class="tool-button">Use Tool</button>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3>Format Converter</h3>
+                <p>Convert between image formats: JPG, PNG, WEBP, and more</p>
+                <button class="tool-button">Use Tool</button>
+            </div>
+            
+            <div class="tool-card">
+                <div class="tool-icon">
+                    <i class="fas fa-crop-alt"></i>
+                </div>
+                <h3>Background Remover</h3>
+                <p>Remove image backgrounds automatically with AI technology</p>
+                <button class="tool-button">Use Tool</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="company-info">
+                    <h3>ImageTools by Omnician</h3>
+                    <p>Founded by Prakhar Rai | Providing innovative image processing solutions</p>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 ImageTools by Omnician. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add interactivity to tool buttons
+        document.querySelectorAll('.tool-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const toolName = this.parentElement.querySelector('h3').textContent;
+                alert(`The ${toolName} would open in a real implementation. This is a demo page.`);
+            });
+        });
+    </script>
+</body>
+</html>
